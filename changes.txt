@@ -1,0 +1,62 @@
+Accepted changes from review:
+
+#Change the association name between "Calender" and "Event" from "Contains" to something else.
+-While I believe "Contains" is fine in this scenario I will change it "Lists" to further improve clarity.
+
+#It's not clear that fee's applies to the berths.
+-I agree, I had it in an earlier iteration and forgot about it. I will add an attribution "cost" to the 
+class "Berth" to make it clearer. 
+
+#Boat description and Event description are unnecessary entities 
+-I agree, I was on the fence about this so an extra opinion is good. Will remove description classes and
+move attributions.
+
+#Add "Membership fee" class
+-While I could see a good model without the "Membership fee", I will it add because it gives the Use Case 
+"Register Boat" more clarity. It will have associations to both "Member" and "Berth".
+
+#Removal and change of boat is not indicated.
+-I will do this by changing the association between "Member" and "Boat" to "Registers" and add another 
+association "CRUD"(Create Read Update Delete) next to it. 
+
+#Listing and showing calendar events could be more clear, show that these two different views exists.
+-This will be done by having two associations "Displays"(show particular event) and "Lists"(list events) 
+between the "Calender" and "Event" classes. Because clarity is important.
+
+---------------------------------------------------------------------------------------------------------------
+
+Rejected changes from reviews:
+
+#Direction arrows could be added to associations to add extra clarity.
+-I don't believe this is necessary as every association in the model visibly follows the rule 
+"read from left to right and top to bottom", and as such doesn't really add anything but clutter.
+
+#Username and password is not really necessary for the domain model.
+-I disagree, I deem it necessary as the Use Case "Authenticate" is very dependent on "username" and "password".
+
+#It would be easier to understand if there was some text explaining the diagram, the associations, 
+and the behavior of the system.
+-This might be true but the goal is to have a domain model that is clear enough that you don't need any 
+text explaining the model.  
+
+#Add "Treasurer" actor.
+-As mentioned in "Applying UML and Patterns" chapter 9.9, you shouldn't include useless or duplicated
+information. This is relevant because there is no required requirement that is dependent on "Treasurer". 
+
+#Add a connection between "Secretary" and "Calendar".
+-Adding a connection would be redundant since the relationship between "Secretary" and "Calendar" is not 
+nearly as important as the connection between "Secretary" and "Event". The "Secretary" doesn't need a 
+connection with "Calendar" to manage "Event"'s.
+
+#Reservation of berth is handled but not the history of it. 
+-There is no required Use Case that requires a history of berth reservations.
+
+-------------------------------------------------------------------------------------------------------------
+
+Other changes:
+
+#Changed multiplicites between "Boat" and "Berth" from "1" to "0..1"
+
+#Added "endDate" to "Event"
+
+
