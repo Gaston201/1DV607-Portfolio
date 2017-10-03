@@ -1,0 +1,33 @@
+----- Run application ------
+(Might only work for Windows computers...)
+
+1. Open cmd
+2. Navigate to the folder where the jar file is located
+3. Enter command: java -jar YachtClub.jar
+4. Done!
+
+5. For commands and other instructions, check out Instructions.txt 
+
+
+
+----- Test/Compile code in Eclipse ------
+1. Open Eclipse and create a new workspace
+2. "File" -> "Import..." -> "General" -> "Projects from Folder or Archive"
+3. Choose "Directory...", and locate and select the "YachtClub" folder inside the "Source Code" folder
+4. "Finish"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
