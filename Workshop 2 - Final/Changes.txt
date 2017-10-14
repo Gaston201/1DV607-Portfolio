@@ -1,0 +1,143 @@
+Accepted changes from review:
+
+#Many classes lack comments.
+-They sure do, will fix.
+
+#The Member ID is not unique when using the same name and personal number.
+-Weird scenario but will be fixed.
+
+#Lack of error handling, program crashes even if the error is minor.
+-No excuse, will be fixed.
+
+#If the application crashes it does not save any data. 
+-Will fix this by fixing crashes. Saving data after every command was causing other issues with the model-view
+-seperation...
+
+#Some duplicates and redundant coding. 
+-Will iterate over this. 
+
+#Moving all trimming and input handling to the view and the console class. 
+-Makes sense.
+
+#Class Diagram: From Secretary to Database it is not an association but a dependency. 
+#Same with Secretary to Console.
+-That's correct, forgot to update design after changing implementation.
+
+#Class Diagram: The attributes are not correctly presented in the diagram.
+-Will add.
+
+#Class Diagram: The name on the associations should be placed either within the class where 
+#it is or at the end of the line next to the arrow.
+-Seems good.
+
+#Class Diagram: Multiplicity is not present for the arraylist of members from database. 
+-Will add to enchance clarity.
+
+#Database: Why is the arraylist with members static?
+-Leftover from earlier iteration, fixed.
+
+#Using iterators can be done more intuitively in java.
+-Will try this out.
+
+#The secretary is not cohesive and does too much without too little focus. 
+-Will I can't really do much about this I will make it easier to read and navigate.
+
+#Database: Has a lot of duplicate methods that exist in the Member class.
+-Will look into.
+
+#The showMember and getMember methods in the database class seems to be doing the same thing.
+-That's a miss by me and will be dealt with.
+
+#Sequence Diagram(CreateMember): It looks like the console calls methods in the secretary class which is wrong. 
+-Will improve clarity here.
+
+#Sequence Diagram(CreateMember): It looks like the methods have arguments but they don’t in the implementation.
+-Will improve clarity here.
+
+#Sequence Diagram(ListMembers): cat() method doesn't make sense.
+-Will improve clarity here.
+
+#Sequence Diagram(ListMembers): Console should have an association to Member because it calls Member.
+-Made me realise some huge mistakes, will edit this along other things.
+
+
+---------------------------------------------------------------------------------------------------------------
+
+Rejected changes from reviews:
+
+
+#Person can register without any personal number.
+-Not a requirement.
+
+#Person can register with the same personal number and name as many times as he/she likes,
+#which should be fixed.
+-Not a requirement.
+
+#Make User Interface clearer by making the user select commands via numbers.
+-As the application doesn't need to be very user friendly I think this is fine.
+
+#Inputhandling? Don't allow every kind of input. 
+-As the application doesn't need to be very user friendly I think this is fine.
+
+#Class Diagram: The program class is missing.
+-Program class is confirmed to be not needed by a lecture. 
+
+#Secretary is very dependent on the Console class.
+-Which it's allowed to be.
+
+#Move the initDatabase and saveList methods to the database class.
+-This is how it used to be but was changed to reduce the influence of storage for model. 
+
+#Is the Secretary in the model or in the view layer?
+-It's in the controller layer, since I'm using the MVC Pattern, which essentially produces the same result
+-as model-view. (Also confirmed usable by a lecture) 
+
+#Remove the static variable in Secretary
+-I would but the current storage(persistence) solution is dependent on it.
+
+#Consider moving all database methods into the database class.
+-The current storage(persistence) solution and the MVC makes it so I can't.
+
+#Why does the Secretary have an arraylist of members if the members are stored in the database?
+-Because it prevents crashing from the persistence solution when it first initialises.
+
+#Database: It breaks encapsulation in the listMembers method as it returns the arraylist with members.
+-It also keeps the model-view seperation. (Might need solution)
+
+#Member: It breaks encapsulation by returning the list of boats.
+-It also keeps the model-view seperation. (Might need solution)
+
+#Member: Unnecessary chains of methods calls gives a lot of room for errors in the future. 
+-This has been done to reduce dependencies and improve reusability.
+
+
+
+---------------------------------------------------------------------------------------------------------------
+
+Other changes:
+
+#Removed member.boat functions from database.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

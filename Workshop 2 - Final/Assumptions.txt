@@ -1,0 +1,2 @@
+The application was made in Eclipse and there might have trouble compiling elsewhere.
+It's also assumed your OS is Windows 10

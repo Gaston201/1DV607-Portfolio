@@ -1,0 +1,48 @@
+* Create new Member
+1. mkmem
+2. (follow console instructions)
+
+
+* List Members (compact or verbose)
+1. ls
+2. (follow console instructions) 
+
+
+
+* Look at a Members info 
+1. cat
+2. (follow console instructions)
+(3). x (to exit from member)
+(4). (Doing any command in member will also move you out of the member)
+
+* Delete a Member
+0. (while in "Look at a Members info")
+1. rmmem
+
+
+* Change Member info
+0. (while in "Look at a Members info")
+1. edit
+2. (follow console instructions)
+
+
+* Register new Boat
+0. (while in "Look at a Members info")
+1. mkboat
+2. (follow console instructions)
+3. (Entering any type other than Sailboat, Motorsailer or Kayak will force the type to be Other)
+
+* Delete a Boat
+0. (while in "Look at a Members info")
+1. rmboat
+2. (follow console instructions)
+
+* Change a Boats info
+0. (while in "Look at a Members info")
+1. editboat
+2. (follow console instructions)
+
+
+* Quit / Save
+0. (while not in member)
+1. quit (this will also save the database)
