@@ -1,0 +1,140 @@
+------Implement Game::Stand
+--Affected
+Game::Stand
+Dealer::Stand
+
+--Changes
+- Added Dealer::Stand.
+- Game::Stand now uses Dealer::Stand which returns true, follows the sequence diagram and deals with dealer actions after player stands 
+
+--------------------------------------------------------------------------------------------------------------------
+------Remove dependency
+--Affected
+PlayGame::Play
+IView
+SimpleView
+SwedishView
+
+--Changes
+- In PlayGame, changed so inputs compare themself to variables in the view.
+- Added method to IView interface, IView::Commands.
+- Added Command method to SimpleView and SwedishView where you can choose what inputs to use for the game.
+
+--------------------------------------------------------------------------------------------------------------------
+------Soft 17
+--Affected
+Player::CalcScore
+Player::CalcAce
+Player::cardValues
+SoftHitStrategy
+
+--Changes
+- Created SoftHitStrategy which implements IHitStrategy and returns a boolean depending on Player::CalcScore and Player::CalcAce
+- Created cardValues which returns an array.
+- Created CalcAce which decides if dealer can hit on 17
+- Moved cardScores code from CalcScore into cardValues method
+
+--------------------------------------------------------------------------------------------------------------------
+------Winning variable rules
+--Affected
+Dealer
+Dealer::Dealer
+Dealer::IsDealerWinner
+RulesFactory::IWinnerStrategy
+IWinnerStrategy
+PlayerWinnerStrategy
+DealerWinnerStrategy
+
+--Changes
+- Created interface IWinnerStrategy
+- Added method GetWinnerRule to RulesFactory which returns a IWinnerStrategy class
+- Created two classes PlayerWinnerStrategy and DealerWinnerStrategy who both implement IWinnerStrategy
+- Added private IWinnerStrategy field to Dealer
+- Added initialization of IWinnerStrategy field in Dealer::Dealer
+- Remade Dealer::IsDealerWinner to use IWinnerStrategy
+
+--------------------------------------------------------------------------------------------------------------------
+------Remove code duplications
+--Affected
+Dealer::Hit
+Dealer::HitDealer
+Dealer::Stand
+Player::DealCard
+InternationalNewGameStrategy
+AmericanNewGameStrategy
+
+--Changes
+- Modified Player::DealCard
+- Replaced duplication from Dealer::Hit with a call to Player::DealCard 
+- Created method Dealer::HitDealer
+- Replaced duplication from Dealer::Stand with a call to Dealer::HitDealer
+- Replaced all duplications in InternationalNewGameStrategy and AmericanNewGameStrategy with calls to Player::DealCard and
+Dealer::HitDealer
+
+--------------------------------------------------------------------------------------------------------------------
+------Observer
+--Affected
+Dealer::Dealer
+Dealer::addSubscriber
+Dealer::Event
+Dealer::Hit
+Dealer::HitDealer
+Game::AddSubscriber
+PlayGame::ICardDrawnObserver
+PlayGame::Playgame
+PlayGame::Play
+PlayGame::CardDrawn
+PlayGame::DisplayInfo
+PlayGame::Init
+
+--Changes
+
+- Added subscribers initialization in Dealer::Dealer
+- Created Dealer::addSubscriber
+- Created Dealer::Event
+- Added a call to Event in Dealer::Hit and Dealer::HitDealer
+- Created Game::AddSubscriber
+- Made PlayGame implement ICardDrawnObserver
+- Created PlayGame::PlayGame
+- Added Game, IView and boolean fields to PlayGame
+- Moved looping UI properties to a new method  PlayGame::DisplayInfo
+- Added initializing code to PlayGame::Play
+- Created PlayGame::CardDrawn
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+------Class diagram
+Dealer Association to IWinnerStrategy (m_winnerRule)
+Dealer Association to ICardDrawnObserver (subscribers)
+
+
+
+PlayerWinnerStrategy Realization to IWinnerStrategy 
+DealerWinnerStrategy Realization to IWinnerStrategy 
+
+RulesFactory Dependency to PlayerWinnerStrategy 
+RulesFactory Dependency to DealerWinnerStrategy 
+
+SoftHitStrategy Realization to IHitStrategy
+RulesFactory Dependency to SoftHitStrategy 
+
+
+
+PlayGame Association to Game (a_game)
+PlayGame Association to IView (a_view)
+
+PlayGame Realization to ICardDrawnObserver 
+--------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
